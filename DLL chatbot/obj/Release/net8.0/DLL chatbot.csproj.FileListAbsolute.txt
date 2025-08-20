@@ -1,0 +1,14 @@
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\bin\Release\net8.0\DLL chatbot.deps.json
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\bin\Release\net8.0\DLL chatbot.dll
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\bin\Release\net8.0\DLL chatbot.pdb
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\DLL chatbot.csproj.AssemblyReference.cache
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\DLL chatbot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\DLL chatbot.AssemblyInfoInputs.cache
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\DLL chatbot.AssemblyInfo.cs
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\DLL chatbot.csproj.CoreCompileInputs.cache
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\DLL chatbot.sourcelink.json
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\DLL chatbot.dll
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\refint\DLL chatbot.dll
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\DLL chatbot.pdb
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\obj\Release\net8.0\ref\DLL chatbot.dll
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\bin\Release\net8.0\DLL chatbot.dll.config

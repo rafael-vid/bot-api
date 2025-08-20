@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Dashboard | Caixa Assistência</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Premium Multipurpose Admin & Dashboard Template"
+          name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.png" />
+
+    <style>
+        body[data-sidebar=dark] .navbar-brand-box, .simplebar-content-wrapper {
+            background: #0074bc !important;
+        }
+    </style>
+
+    @*<link href="../assets/libs/chartist/chartist.min.css" rel="stylesheet" />*@
+
+
+    <!-- Bootstrap Css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+
+    <link href="../assets/css/app.min.css" rel="stylesheet" />
+
+    @*    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>*@
+
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+
+    <!-- JAVASCRIPT -->
+    <script src="../assets/libs/jquery/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/comum.js"></script>
+
+    <style>
+        body[data-sidebar=dark] .navbar-brand-box, .simplebar-content-wrapper{
+            background-color: #006bae !important
+        }
+        .mm-active .active {
+            background-color: #f7941e !important;
+        }
+        #page-topbar {
+            background-color: #F3F5F9 !important;
+        }
+        body {
+            background-color: #fff !important;
+        }
+    </style>
+
+</head>
+
+<body data-sidebar="dark">
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box">
+                        <a href="../Painel/Home" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="../assets/images/logocaixa.png" alt="" height="22" />
+                            </span>
+                            <span class="logo-lg">
+                                <img src="../assets/images/logocaixa.png" alt="" height="17" />
+                            </span>
+                        </a>
+
+                        <a href="../Painel/Home" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="../assets/images/logocaixa.png" alt="" height="50" />
+                            </span>
+                            <span class="logo-lg">
+                                <img src="../assets/images/logocaixa.png" alt="" height="50" />
+                            </span>
+                        </a>
+                    </div>
+
+                    <button type="button"
+                            class="btn btn-sm px-3 font-size-24 header-item waves-effect"
+                            id="vertical-menu-btn">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                </div>
+
+                <div class="d-flex">
+                    <div class="dropdown d-none d-lg-inline-block">
+                        <button type="button"
+                                class="btn header-item noti-icon waves-effect"
+                                data-bs-toggle="fullscreen">
+                            <i class="mdi mdi-fullscreen"></i>
+                        </button>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button"
+                                class="btn header-item noti-icon waves-effect"
+                                id="page-header-notifications-dropdown"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            <i class="mdi mdi-bell-outline"></i>
+                            <span class="badge bg-danger rounded-pill">0</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                             aria-labelledby="page-header-notifications-dropdown">
+                            <div class="p-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h5 class="m-0 font-size-16">Notificação (0)</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ==========  Menu Vertical ========== -->
+        <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Menu</li>
+
+                        <li>
+                            <a href="../Painel/FechamentoMes" class="waves-effect">
+                                <i class="ti-home"></i>
+                                <span>Fechamento mês</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../Painel/CriarAtividade" class="waves-effect">
+                                <i class="ti-plus"></i>
+                                <span>Nova atividade</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../Painel/ListaAtividade?Status=Aguardando" class="waves-effect">
+                                <i class="ti-folder"></i>
+                                <span>Novas Solicitações</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../Painel/ListaAtividade?Status=Aprovado" class="waves-effect">
+                                <i class="ti-folder"></i>
+                                <span>Minhas atividades</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../Painel/ListaAtividadeSolicitada" class="waves-effect">
+                                <i class="ti-folder"></i>
+                                <span>Minhas Solicitações</span>
+                            </a>
+                        </li>
+
+
+
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Menu Vertical -->
+        <!-- ============================================================== -->
+        <!-- CONTEUDO PRINCIPAL -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+            <div class="page-content">
+                @RenderBody()
+            </div>
+        </div>
+    <!-- ============================================================== -->
+    <!--  ######################### CONTEUDO PRINCIPAL ######################### -->
+    <!-- ============================================================== -->
+    <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+
+
+    <!-- Peity chart-->
+    @*<script src="../assets/libs/peity/jquery.peity.min.js"></script>*@
+
+    <!-- Plugin Js-->
+    @* <script src="../assets/libs/chartist/chartist.min.js"></script>
+        <script src="../assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>*@
+
+    @*<script src="../assets/js/pages/dashboard.init.js"></script>*@
+
+    <script src="../assets/js/app.js"></script>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css" />
+
+    <script type="text/javascript"
+            charset="utf8"
+            src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#table").DataTable({
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json",
+                },
+                ordering: false
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+

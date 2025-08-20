@@ -1,0 +1,15 @@
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\bin\Debug\net8.0\ChatBot script.exe
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\bin\Debug\net8.0\ChatBot script.deps.json
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\bin\Debug\net8.0\ChatBot script.runtimeconfig.json
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\bin\Debug\net8.0\ChatBot script.dll
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\bin\Debug\net8.0\ChatBot script.pdb
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ChatBot script.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ChatBot script.AssemblyInfoInputs.cache
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ChatBot script.AssemblyInfo.cs
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ChatBot script.csproj.CoreCompileInputs.cache
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ChatBot script.sourcelink.json
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ChatBot script.dll
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\refint\ChatBot script.dll
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ChatBot script.pdb
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ChatBot script.genruntimeconfig.cache
+C:\Users\acaro\projetos\chatbot\WhatsApp-API\ChatBot script\obj\Debug\net8.0\ref\ChatBot script.dll

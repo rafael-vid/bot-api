@@ -1,0 +1,51 @@
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\DLL chatbot.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\DLL chatbot.deps.json
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\DLL chatbot.dll.config
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\DLL chatbot.pdb
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Azure.Core.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Azure.Identity.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\BouncyCastle.Crypto.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Google.Protobuf.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.Data.SqlClient.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.Identity.Client.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.IdentityModel.Logging.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.IdentityModel.Protocols.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.IdentityModel.Tokens.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Microsoft.SqlServer.Server.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\MySql.Data.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\Renci.SshNet.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\SshNet.Security.Cryptography.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.ClientModel.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.Configuration.ConfigurationManager.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.Diagnostics.EventLog.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.Memory.Data.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.Resources.Extensions.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.Runtime.Caching.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.Security.Cryptography.ProtectedData.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.Security.Permissions.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\System.Xml.XPath.XmlDocument.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\acaro\OneDrive\Área de Trabalho\Publish teste 2\runtimes\win\lib\net8.0\System.Runtime.Caching.dll

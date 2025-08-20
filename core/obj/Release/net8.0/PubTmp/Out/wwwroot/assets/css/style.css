@@ -1,0 +1,35 @@
+.page-title {
+  font-size: 32px !important;
+}
+.ver_detalhes {
+  color: #5b626b !important;
+  font-size: 20px;
+}
+.tb_produtos td input {
+  width: 30px !important;
+}
+.bg-primary {
+    background-color: #fab515 !important;
+}
+.text-dark{
+    color: #000 !important;
+}
+.btn-primary {
+    color: #000 !important;
+    background-color: #fab515 !important;
+    border-color: #d29f0c !important;
+}
+#page-topbar {
+    background: #c9c4c4 !important;
+}
+.btn-success {
+    color: #000 !important;
+    background-color: #909f9a !important;
+    border-color: #5b6b7e !important;
+}
+body[data-sidebar=dark] .navbar-brand-box, .simplebar-content-wrapper{
+    background-color: #231F20 !important
+}
+body[data-sidebar=dark] #sidebar-menu ul li a, body[data-sidebar=dark] #sidebar-menu ul li a i {
+    color: #fff !important;
+}
