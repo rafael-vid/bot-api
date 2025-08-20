@@ -60,11 +60,11 @@ namespace core.Infra.Repository
 
             // Default & normalize
             var midia = mensagem.midia ?? 1;
-            if (midia != 1 && midia != 2) midia = 1;
+            if (midia != 1 && midia != 2 && midia != 3) midia = 1;
 
             // When not image, clear image fields
-            var url = midia == 2 ? mensagem.url : null;
-            var imagemName = midia == 2 ? mensagem.imagemName : null;
+            var url = (midia == 2 || midia == 3) ? mensagem.url : null;
+            var imagemName = (midia == 2 || midia == 3) ? mensagem.imagemName : null;
 
             const string sql = @"
         INSERT INTO alerta

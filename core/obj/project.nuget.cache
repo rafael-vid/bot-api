@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yy+CESGSGqw=",
+  "dgSpecHash": "J9P5L151pww=",
   "success": true,
-  "projectFilePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+  "projectFilePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\00100\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\00100\\.nuget\\packages\\closedxml\\0.95.4\\closedxml.0.95.4.nupkg.sha512",
@@ -201,9 +201,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'Microsoft.AspNetCore.Authentication.JwtBearer' 5.0.3 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-q7cg-43mg-qp69",
-      "projectPath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+      "projectPath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+      "filePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
       "libraryId": "Microsoft.AspNetCore.Authentication.JwtBearer",
       "targetGraphs": [
         "net8.0"
@@ -213,9 +213,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'Swashbuckle.AspNetCore.SwaggerUI' 5.0.0-rc2 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-qrmm-w75w-3wpx",
-      "projectPath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+      "projectPath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+      "filePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
       "libraryId": "Swashbuckle.AspNetCore.SwaggerUI",
       "targetGraphs": [
         "net8.0"
@@ -225,9 +225,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'System.Text.Json' 8.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
-      "projectPath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+      "projectPath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+      "filePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
       "libraryId": "System.Text.Json",
       "targetGraphs": [
         "net8.0"
@@ -237,9 +237,9 @@
       "code": "NU1701",
       "level": "Warning",
       "message": "Package 'Microsoft.Office.Interop.Excel 14.0.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+      "projectPath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\core\\core.csproj",
+      "filePath": "C:\\Users\\00100\\OneDrive\\Documents\\WhatsApp-API (2)\\WhatsApp-API\\bot-api\\core\\core.csproj",
       "libraryId": "Microsoft.Office.Interop.Excel",
       "targetGraphs": [
         "net8.0"

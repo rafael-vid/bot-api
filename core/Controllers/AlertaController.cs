@@ -147,17 +147,13 @@ namespace core.Controllers
             [JsonPropertyName("mensagem")]
             public string Mensagem { get; set; } = "";
 
-            [JsonPropertyName("imagemUrl")]
-            public string? ImagemUrl { get; set; }
+            // Generic media URL returned to the bot client
+            [JsonPropertyName("url")]
+            public string? Url { get; set; }
 
+            // Optional file name for images or videos
             [JsonPropertyName("imagemName")]
             public string? ImagemName { get; set; }
-
-            [JsonPropertyName("videoUrl")]
-            public string? VideoUrl { get; set; }
-
-            [JsonPropertyName("videoName")]
-            public string? VideoName { get; set; }
         }
 
         //[AllowAnonymous]//[Authorize]
@@ -195,26 +191,15 @@ namespace core.Controllers
 
                     parsed.Mensagem ??= string.Empty;
 
-                    if (parsed.Midia == 2)
+                    if (parsed.Midia == 2 || parsed.Midia == 3)
                     {
-                        if (string.IsNullOrWhiteSpace(parsed.ImagemUrl))
+                        if (string.IsNullOrWhiteSpace(parsed.Url))
                             parsed.Midia = 1;
                     }
                     else
                     {
-                        parsed.ImagemUrl = null;
+                        parsed.Url = null;
                         parsed.ImagemName = null;
-                    }
-
-                    if (parsed.Midia == 3)
-                    {
-                        if (string.IsNullOrWhiteSpace(parsed.VideoUrl))
-                            parsed.Midia = 1;
-                    }
-                    else
-                    {
-                        parsed.VideoUrl = null;
-                        parsed.VideoName = null;
                     }
 
                     return Ok(parsed); // -> JSON with "midia"

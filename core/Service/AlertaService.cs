@@ -73,16 +73,16 @@ namespace core.Service
 
             // Default/normalize midia (1=text, 2=image)
             var midia = mensagem.midia ?? 1;
-            if (midia != 1 && midia != 2) midia = 1;
+            if (midia != 1 && midia != 2 && midia != 3) midia = 1;
 
             // Basic message text safety
             mensagem.mensagem ??= string.Empty;
 
             // If it's an image, validate URL and derive filename when missing
-            if (midia == 2)
+            if (midia == 2 || midia == 3)
             {
                 if (string.IsNullOrWhiteSpace(mensagem.url))
-                    throw new ArgumentException("url é obrigatório quando midia = 2.", nameof(mensagem.url));
+                    throw new ArgumentException("url é obrigatório quando midia = 2 ou 3.", nameof(mensagem.url));
 
                 if (!Uri.TryCreate(mensagem.url, UriKind.Absolute, out var uri))
                     throw new ArgumentException("url inválido. Informe uma URL absoluta (http/https).", nameof(mensagem.url));

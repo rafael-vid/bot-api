@@ -104,7 +104,8 @@ namespace core.Util
         {
             if (msg == null) return string.Empty;
 
-            if (msg.midia == 2)
+            // For media types (2 = image, 3 = video) return a JSON payload
+            if (msg.midia == 2 || msg.midia == 3)
             {
                 Console.WriteLine($"Enviando mídia com URL: {msg.url}");
                 return JsonSerializer.Serialize(new
@@ -116,6 +117,7 @@ namespace core.Util
                 });
             }
 
+            // Default behaviour for plain text messages
             return msg.Texto ?? string.Empty;
         }
     }
