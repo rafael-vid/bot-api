@@ -31,7 +31,7 @@ namespace core.Util
 
                     Console.WriteLine($"Telefone encontrado: {telefone}, Estado: {estado}");
 
-                    if (string.IsNullOrEmpty(estado))
+                    if (string.IsNullOrEmpty(estado) || estado=="0")
                     {
                         AtualizarEstado(fornecedor, telefone, "1");
                         var msg = BuscarMensagemRetorno(fornecedor, "8", 1);

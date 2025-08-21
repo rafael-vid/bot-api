@@ -220,6 +220,26 @@ namespace core.Controllers
             }
         }
 
+        //[Authorize]
+        [HttpPost]
+        [Produces(typeof(string))]
+        [Route("ResetConversa")]
+        public IActionResult ResetConversa(string telefone)
+        {
+            try
+            {
+                var fornecedor = new FornecedorService();
+                fornecedor.AtualizarEstado(telefone, "0");
+
+                return Ok("Conversa resetada com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
         [AllowAnonymous]
         [HttpPost]
         [Produces(typeof(string))]

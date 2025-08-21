@@ -2,7 +2,6 @@ import { create, Message, Whatsapp } from 'venom-bot';
 import { ConversaChatBot } from '../model/conversaChatBot';
 import moment from 'moment';
 import { environment } from '../config/environment';
-import { setTimeout } from "timers/promises";
 import { getLogger } from '../logConfig';
 import { Logger, ILogObj } from "tslog";
 
@@ -10,6 +9,7 @@ export class WhatsAppProvider {
     private sessionName: string;
     private URL = environment.baseUrl;
     private token: string;
+    private timers: Map<string, NodeJS.Timeout> = new Map();
     
     private logModel = getLogger("model");
     private log: Logger<ILogObj> = new Logger({
@@ -42,6 +42,8 @@ export class WhatsAppProvider {
 
     const from = message.from;
     this.log.debug('message', message);
+
+    this.resetUserTimer(client, from);
 
     try {
       const response = await fetch(
@@ -76,22 +78,70 @@ export class WhatsAppProvider {
           data.mensagem.replace(/\\n/g, "\n")
         );
         this.log.info('Enviado (imagem) para', from);
-} else if (midia === 3) {
+      } else if (midia === 3) {
         await client.sendFile(
           message.from,
           data.url,
           data.imagemName ?? 'video.mp4',
-          data.mensagem
+          data.mensagem.replace(/\\n/g, "\n")
         );
         this.log.info('Enviado (video) para', from);
       } else {
         this.log.error('Resposta inválida: midia', midia, 'ou falta url');
       }
+
+      if (data.finalizar) {
+        this.clearTimer(from);
+      }
     } catch (erro) {
       this.log.error('Erro ao processar mensagem:', erro);
     }
   });
+
+  process.on('SIGINT', () => this.clearAllTimers());
+  process.on('SIGTERM', () => this.clearAllTimers());
 }
+
+    private resetUserTimer(client: Whatsapp, from: string) {
+        this.clearTimer(from);
+        const timer = global.setTimeout(async () => {
+            try {
+                await this.resetConversation(from);
+                await client.sendText(from, 'conversation timed out');
+            } catch (erro) {
+                this.log.error('Erro timeout handler:', erro);
+            } finally {
+                this.clearTimer(from);
+            }
+        }, 5 * 60 * 1000);
+        this.timers.set(from, timer);
+    }
+
+    private clearTimer(from: string) {
+        const timer = this.timers.get(from);
+        if (timer) {
+            clearTimeout(timer);
+            this.timers.delete(from);
+        }
+    }
+
+    private clearAllTimers() {
+        for (const [, timer] of this.timers) {
+            clearTimeout(timer);
+        }
+        this.timers.clear();
+    }
+
+    private async resetConversation(from: string) {
+        try {
+            await fetch(`${this.URL}ResetConversa?telefone=${from.substring(2, from.length - 5)}`, {
+                method: 'POST',
+                headers: { Authorization: 'Bearer ' + this.token },
+            });
+        } catch (erro) {
+            this.log.error('Erro resetConversation:', erro);
+        }
+    }
 
 
     async login(){
