@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using MySql.Data.MySqlClient;
 using System.Threading;
 using System.Configuration;
+using System.IO;
+using System.Text.RegularExpressions;
 
 class Program
 {
@@ -50,7 +52,7 @@ class Program
                             var telefone = reader["telefone"];
                             var titulo = reader["titulo"].ToString().Replace("\n", "").Replace("\r", "");
 
-                            var (mensagem, combinacao) = ComporMensagem(bloco1, bloco2, bloco3, bloco4, bloco5, bloco6, bloco7, titulo);
+                            var (mensagem, combinacao, imagemUrl) = ComporMensagem(bloco1, bloco2, bloco3, bloco4, bloco5, bloco6, bloco7, titulo);
                             Console.WriteLine(mensagem);
                             Console.WriteLine(combinacao);
 
@@ -66,6 +68,9 @@ class Program
                                 nome = titulo,
                                 email = "",
                                 telefone = telefone,
+                                midia = string.IsNullOrEmpty(imagemUrl) ? 1 : 2,
+                                url = imagemUrl,
+                                imagemName = string.IsNullOrEmpty(imagemUrl) ? null : Path.GetFileName(imagemUrl),
                             };
 
                             var jsonContent = JsonConvert.SerializeObject(requestData);
@@ -90,7 +95,7 @@ class Program
                             }
 
                             string nome = requestData.nome;
-                            string NumeroTelefone = requestData.telefone.ToString();
+                            string NumeroTelefone = requestData.telefone.ToString()
                             string CombinacaoEnviada = combinacao.ToString();
                             string query2 = "INSERT INTO chatbot (Nome, Numero_Telefone, Combinacao_Enviada) VALUES (@Nome, @NumeroTelefone, @CombinacaoEnviada)";
 
@@ -182,33 +187,40 @@ class Program
         return messages;
     }
 
-static (string, string) ComporMensagem(List<string> bloco1, List<string> bloco2, List<string> bloco3, List<string> bloco4, List<string> bloco5, List<string> bloco6, List<string> bloco7, string titulo)
+    static (string mensagem, string combinacao, string imagemUrl) ComporMensagem(List<string> bloco1, List<string> bloco2, List<string> bloco3, List<string> bloco4, List<string> bloco5, List<string> bloco6, List<string> bloco7, string titulo)
+    {
+        Random random = new Random();
+
+        // Seleciona um item aleatório de cada bloco e armazena o índice
+        int index1 = random.Next(bloco1.Count);
+        int index2 = random.Next(bloco2.Count);
+        int index3 = random.Next(bloco3.Count);
+        int index4 = random.Next(bloco4.Count);
+        int index5 = random.Next(bloco5.Count);
+        int index6 = random.Next(bloco6.Count);
+        int index7 = random.Next(bloco7.Count);
+
+        string parte1 = bloco1[index1];
+        string parte2 = bloco2[index2];
+        string parte3 = bloco3[index3];
+        string parte4 = bloco4[index4];
+        string parte5 = bloco5[index5];
+        string parte6 = bloco6[index6];
+        string parte7 = bloco7[index7];
+
+        string pattern = @"https?://\S+";
+        string imagemUrl = "";
+        var match = Regex.Match(parte7, pattern);
+        if (match.Success)
         {
-            Random random = new Random();
-
-            // Seleciona um item aleatório de cada bloco e armazena o índice
-            int index1 = random.Next(bloco1.Count);
-            int index2 = random.Next(bloco2.Count);
-            int index3 = random.Next(bloco3.Count);
-            int index4 = random.Next(bloco4.Count);
-            int index5 = random.Next(bloco5.Count);
-            int index6 = random.Next(bloco6.Count);
-            int index7 = random.Next(bloco7.Count);
-
-            string parte1 = bloco1[index1];
-            string parte2 = bloco2[index2];
-            string parte3 = bloco3[index3];
-            string parte4 = bloco4[index4];
-            string parte5 = bloco5[index5];
-            string parte6 = bloco6[index6];
-            string parte7 = bloco7[index7];
-
-
+            imagemUrl = match.Value;
+            parte7 = Regex.Replace(parte7, pattern, "").Trim();
+        }
 
         // Concatena os blocos em uma única mensagem
-        string mensagem = $"{parte1.Replace("[titulo]",titulo)} {parte2} {parte3} {parte4} {parte5} {parte6} {parte7}";
-            string combinacao = $"{index1 + 1}{index2 + 1}{index3 + 1}{index4 + 1}{index5 + 1}{index6 + 1}{index6 + 1}";
-            return (mensagem, combinacao);
-        }
+        string mensagem = $"{parte1.Replace("[titulo]", titulo)} {parte2} {parte3} {parte4} {parte5} {parte6} {parte7}";
+        string combinacao = $"{index1 + 1}{index2 + 1}{index3 + 1}{index4 + 1}{index5 + 1}{index6 + 1}{index6 + 1}";
+        return (mensagem, combinacao, imagemUrl);
     }
+}
 

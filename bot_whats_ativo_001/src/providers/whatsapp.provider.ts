@@ -12,32 +12,33 @@ export class WhatsAppProvider {
     private URL = environment.baseUrl;
     private token: string;
     private client: Whatsapp
-    
+
     private logModel = getLogger("model");
     private log: Logger<ILogObj> = new Logger({
-      prettyLogTemplate: "{{yyyy}}.{{mm}}.{{dd}} {{hh}}:{{MM}}:{{ss}}:{{ms}}\t{{logLevelName}}\t",
+        prettyLogTemplate: "{{yyyy}}.{{mm}}.{{dd}} {{hh}}:{{MM}}:{{ss}}:{{ms}}\t{{logLevelName}}\t",
     });
 
 
     constructor(
-      sessionName: string
-      ) {
-      this.sessionName = sessionName;
+        sessionName: string
+    ) {
+        this.sessionName = sessionName;
 
-      this.getFila = this.getFila.bind(this);
-      this.sendMessageToWhatsapp = this.sendMessageToWhatsapp.bind(this);
-      this.marcaMensagemEnviada = this.marcaMensagemEnviada.bind(this);
+        this.getFila = this.getFila.bind(this);
+        this.sendMessageToWhatsapp = this.sendMessageToWhatsapp.bind(this);
+        this.sendImage = this.sendImage.bind(this);
+        this.marcaMensagemEnviada = this.marcaMensagemEnviada.bind(this);
     }
 
     async init() {
         create({
             session: this.sessionName,
             autoClose: 0,
-	    headless: 'new'
+            headless: 'new'
         }).then((client: Whatsapp) => {
-	  this.client = client;
-          this.log.info("Init Robo.");
-          this.listen();
+            this.client = client;
+            this.log.info("Init Robo.");
+            this.listen();
         }).catch((erro) => {
             this.log.error("Create erro.", erro);
         });
@@ -45,12 +46,12 @@ export class WhatsAppProvider {
 
     async listen() {
 
-      await this.login();
+        await this.login();
 
-      //Consular Api 
-      this.ConsultaUsuarioWhats();
+        //Consular Api 
+        this.ConsultaUsuarioWhats();
 
-      this.client.onMessage(async (message) => {
+        this.client.onMessage(async (message) => {
 
         await this.marcaMensagemRecebida(message.from, message.timestamp).then(r => {});
       });
@@ -93,82 +94,109 @@ export class WhatsAppProvider {
     }
 
     async sendMessageToWhatsapp(from: string, msg: string, IdAlerta: string) {
-      this.log.info("---sendMessageToWhatsapp---");
-      return new Promise((resolve, reject) => {
-        this.client
-          .sendText(from, msg)
-          .then(async (result: any) => {
-              if(!result.erro){
-                await this.marcaMensagemEnviada(IdAlerta).then(_ => {
-                }).catch(e => {
-                  this.log.error("Erro marcaMensagemEnviada:" , e);
+        this.log.info("---sendMessageToWhatsapp---");
+        return new Promise((resolve, reject) => {
+            this.client
+                .sendText(from, msg)
+                .then(async (result: any) => {
+                    if (!result.erro) {
+                        await this.marcaMensagemEnviada(IdAlerta).then(_ => {
+                        }).catch(e => {
+                            this.log.error("Erro marcaMensagemEnviada:", e);
+                        })
+                    }
+                    resolve(result)
                 })
-              }
-              resolve(result)
-          })
-          .catch(async (erro) => {
-            this.log.error('Error sendMessageToWhatsapp: ', erro);
-              await this.marcaMensagemEnviada(IdAlerta).then(_ => {
-              }).catch(e => {
-                this.log.error("Erro marcaMensagemEnviada:" , e);
-              })
-              reject(erro)
-          });
-      });
-  }
-
-    async ConsultaUsuarioWhats(){
-	    this.log.info("---ConsultaUsuarioWhats---");
-      await this.getFila().then(async r => {
-        const result: Alerta[] = r;
-
-        if(result) {
-          for (const [index, response] of result.entries()) {
-            try {
-  
-              if( (index % 20) == 0) {
-                await setTimeout(20000);
-              }
-              if(response.telefone.length == 13) {
-  
-                const numberDDI = response.telefone.substring(0, 2);
-                const numberDDD = response.telefone.substring(2, 4);
-                const numberUser = response.telefone.substring(4);
-  
-                const number = numberDDI + numberDDD /*+ ((parseInt(numberDDD) >= 30) ? "9" : "")*/ + numberUser + "@c.us";
-  
-                this.log.info("Enviando... " , number);
-                await this.sendMessageToWhatsapp(number, response.mensagem, response.Id);
-                await setTimeout(36000);
-              }
-            } catch (error: any) {
-              this.log.error("Erro Enviar Mensagem: ", error.text);
-            } 
-          }
-        }
-
-        await setTimeout(30000);
-        this.repetirConsulta();
-
-      }).catch((err) => {
-        this.log.error("Erro ConsultaUsuarioWhats: ", err);
-        //this.repetirConsulta();
-      })
+                .catch(async (erro) => {
+                    this.log.error('Error sendMessageToWhatsapp: ', erro);
+                    await this.marcaMensagemEnviada(IdAlerta).then(_ => {
+                    }).catch(e => {
+                        this.log.error("Erro marcaMensagemEnviada:", e);
+                    })
+                    reject(erro)
+                });
+        });
     }
 
-    async repetirConsulta(){
-      this.log.info("---RepetirConsulta---");
-	    await this.login();
-      this.ConsultaUsuarioWhats()
+    async sendImage(from: string, url: string, filename: string, caption: string, IdAlerta: string) {
+        this.log.info("---sendImage---");
+        return new Promise((resolve, reject) => {
+            this.client
+                .sendImage(from, url, filename, caption)
+                .then(async (result: any) => {
+                    if (!result.erro) {
+                        await this.marcaMensagemEnviada(IdAlerta).catch(e => {
+                            this.log.error("Erro marcaMensagemEnviada:", e);
+                        });
+                    }
+                    resolve(result);
+                })
+                .catch(async (erro) => {
+                    this.log.error('Error sendImage: ', erro);
+                    await this.marcaMensagemEnviada(IdAlerta).catch(e => {
+                        this.log.error("Erro marcaMensagemEnviada:", e);
+                    });
+                    reject(erro);
+                });
+        });
     }
 
-    async getFila(){
-      this.log.info("---getFila---")
-      try {
-        const getNumeros = await fetch(this.URL + "GetFila", {
-          headers: {
-            Authorization: "Bearer " + this.token
-          }
+    async ConsultaUsuarioWhats() {
+        this.log.info("---ConsultaUsuarioWhats---");
+        await this.getFila().then(async r => {
+            const result: Alerta[] = r;
+
+            if (result) {
+                for (const [index, response] of result.entries()) {
+                    try {
+
+                        if ((index % 20) == 0) {
+                            await setTimeout(20000);
+                        }
+                        if (response.telefone.length == 13) {
+
+                            const numberDDI = response.telefone.substring(0, 2);
+                            const numberDDD = response.telefone.substring(2, 4);
+                            const numberUser = response.telefone.substring(4);
+
+                            const number = numberDDI + numberDDD /*+ ((parseInt(numberDDD) >= 30) ? "9" : "")*/ + numberUser + "@c.us";
+
+                            this.log.info("Enviando... ", number);
+                            if (Number(response.tipo) === 2 && response.url) {
+                                await this.sendImage(number, response.url, response.imagemName ?? 'image', response.mensagem, response.Id);
+                            } else {
+                                await this.sendMessageToWhatsapp(number, response.mensagem, response.Id);
+                            }
+                            await setTimeout(36000);
+                        }
+                    } catch (error: any) {
+                        this.log.error("Erro Enviar Mensagem: ", error.text);
+                    }
+                }
+            }
+
+            await setTimeout(30000);
+            this.repetirConsulta();
+
+        }).catch((err) => {
+            this.log.error("Erro ConsultaUsuarioWhats: ", err);
+            //this.repetirConsulta();
+        })
+    }
+
+    async repetirConsulta() {
+        this.log.info("---RepetirConsulta---");
+        await this.login();
+        this.ConsultaUsuarioWhats()
+    }
+
+    async getFila() {
+        this.log.info("---getFila---")
+        try {
+            const getNumeros = await fetch(this.URL + "GetFila", {
+                headers: {
+                    Authorization: "Bearer " + this.token
+                }
         });
         return getNumeros.json();
       } catch (error) {

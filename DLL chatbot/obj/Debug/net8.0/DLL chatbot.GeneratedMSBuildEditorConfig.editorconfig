@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DLL_chatbot
-build_property.ProjectDir = C:\Users\acaro\projetos\chatbot\WhatsApp-API\DLL chatbot\
+build_property.ProjectDir = C:\Users\Rafael\Documents\bot-api\DLL chatbot\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
