@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using MySql.Data.MySqlClient;
-using System.Threading;
 using System.Configuration;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -14,7 +13,8 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnectionString"].ToString();
+        // Retrieve the connection string from configuration
+        string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnectionString"].ConnectionString;
         int delay = GetDelay(connectionString);
 
         // Retrieve messages from the database
@@ -73,6 +73,7 @@ class Program
                                 url = imagemUrl,
                                 imagemName = string.IsNullOrEmpty(imagemUrl) ? null : Path.GetFileName(imagemUrl),
                             };
+                            
                             var url = ConfigurationManager.AppSettings["url"].ToString();
                             var jsonContent = JsonConvert.SerializeObject(requestData);
                             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
@@ -80,6 +81,7 @@ class Program
                             try
                             {
                                 var response = await client.PostAsync(url, content);
+                                Console.WriteLine(await response.Content.ReadAsStringAsync());
                                 if (response.IsSuccessStatusCode)
                                 {
                                     var responseContent = await response.Content.ReadAsStringAsync();
@@ -111,7 +113,7 @@ class Program
                                 connection2.Close();
                             }
                             Console.WriteLine("Dados inseridos com sucesso!");
-                            Thread.Sleep(delay);
+                            await Task.Delay(delay);
                         }
                     }
                 }
@@ -119,7 +121,7 @@ class Program
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                System.Threading.Thread.Sleep(10000);
+                await Task.Delay(10000);
             }
         }
     }
