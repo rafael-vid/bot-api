@@ -19,6 +19,7 @@ class Program
 
         // Retrieve messages from the database
         List<string>[] mensagens = await RetrieveMessagesFromDatabase(connectionString);
+        string imagem_URL = await RetrieveImagemUrl(connectionString);
 
         if (mensagens == null)
         {
@@ -52,11 +53,11 @@ class Program
                             var telefone = reader["telefone"];
                             var titulo = reader["titulo"].ToString().Replace("\n", "").Replace("\r", "");
 
-                            var (mensagem, combinacao, imagemUrl) = ComporMensagem(bloco1, bloco2, bloco3, bloco4, bloco5, bloco6, bloco7, titulo);
+                            var (mensagem, combinacao, imagemUrl) = ComporMensagem(bloco1, bloco2, bloco3, bloco4, bloco5, bloco6, bloco7, titulo, imagem_URL);
                             Console.WriteLine(mensagem);
                             Console.WriteLine(combinacao);
 
-                            var url = ConfigurationManager.AppSettings["url"].ToString();
+                            
                             var client = new HttpClient();
 
                             var requestData = new
@@ -72,7 +73,7 @@ class Program
                                 url = imagemUrl,
                                 imagemName = string.IsNullOrEmpty(imagemUrl) ? null : Path.GetFileName(imagemUrl),
                             };
-
+                            var url = ConfigurationManager.AppSettings["url"].ToString();
                             var jsonContent = JsonConvert.SerializeObject(requestData);
                             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
@@ -95,7 +96,7 @@ class Program
                             }
 
                             string nome = requestData.nome;
-                            string NumeroTelefone = requestData.telefone.ToString()
+                            string NumeroTelefone = requestData.telefone.ToString();
                             string CombinacaoEnviada = combinacao.ToString();
                             string query2 = "INSERT INTO chatbot (Nome, Numero_Telefone, Combinacao_Enviada) VALUES (@Nome, @NumeroTelefone, @CombinacaoEnviada)";
 
@@ -144,7 +145,36 @@ class Program
             }
         }
     }
-    static async Task<List<string>[]> RetrieveMessagesFromDatabase(string connectionString)
+    static async Task<string> RetrieveImagemUrl(string connectionString)
+    {
+        string query = "Select url FROM mensagens WHERE bloco = 7";
+        using (MySqlConnection connection = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                await connection.OpenAsync();
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            string imagemUrl = reader.GetString("url");
+                            return imagemUrl;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving imagem URL: " + ex.Message);
+                return null;
+            }
+        }
+        return null;
+    }
+        static async Task<List<string>[]> RetrieveMessagesFromDatabase(string connectionString)
     {
         List<string>[] messages = new List<string>[7];
         for (int i = 0; i < 7; i++)
@@ -187,7 +217,7 @@ class Program
         return messages;
     }
 
-    static (string mensagem, string combinacao, string imagemUrl) ComporMensagem(List<string> bloco1, List<string> bloco2, List<string> bloco3, List<string> bloco4, List<string> bloco5, List<string> bloco6, List<string> bloco7, string titulo)
+    static (string mensagem, string combinacao, string imagemUrl) ComporMensagem(List<string> bloco1, List<string> bloco2, List<string> bloco3, List<string> bloco4, List<string> bloco5, List<string> bloco6, List<string> bloco7, string titulo, string imagemUrl)
     {
         Random random = new Random();
 
@@ -208,18 +238,12 @@ class Program
         string parte6 = bloco6[index6];
         string parte7 = bloco7[index7];
 
-        string pattern = @"https?://\S+";
-        string imagemUrl = "";
-        var match = Regex.Match(parte7, pattern);
-        if (match.Success)
-        {
-            imagemUrl = match.Value;
-            parte7 = Regex.Replace(parte7, pattern, "").Trim();
-        }
+        
+        
 
         // Concatena os blocos em uma única mensagem
         string mensagem = $"{parte1.Replace("[titulo]", titulo)} {parte2} {parte3} {parte4} {parte5} {parte6} {parte7}";
-        string combinacao = $"{index1 + 1}{index2 + 1}{index3 + 1}{index4 + 1}{index5 + 1}{index6 + 1}{index6 + 1}";
+        string combinacao = $"{index1 + 1}{index2 + 1}{index3 + 1}{index4 + 1}{index5 + 1}{index6 + 1}{index7 + 1}";
         return (mensagem, combinacao, imagemUrl);
     }
 }
